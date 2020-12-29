@@ -1,6 +1,5 @@
 import api from '../api/api'
 
-// const BASE_URL = process.env.VUE_APP_BASE_URL
 const BASE_ENDPOINT = '/article'
 
 function getAll() {
@@ -8,7 +7,7 @@ function getAll() {
 }
 
 function create(article) {
-  return api.post(`${BASE_ENDPOINT}/create`)
+  return api.post(`${BASE_ENDPOINT}/create`, article)
 }
 
 export default {

@@ -1,11 +1,9 @@
 <template>
-  <div class="container">
-
-  </div>
+  <div></div>
 </template>
 
 <script>
 export default {
-  name: 'Board',
+  name: 'FolderComponent'
 }
 </script>
