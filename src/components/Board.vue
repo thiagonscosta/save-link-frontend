@@ -1,28 +1,21 @@
 <template>
-  <div></div>
+  <div>
+  </div>
 </template>
 
 <script>
-// import axios from 'axios';
-import article from '../services/article'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Board',
-  data() {
-    return {
-      articles: [],
-    }
+  components: {
+    // ArticleComponent
   },
-  mounted() {
-    // axios.get('http://localhost:9090/api/articles').then((data) => console.log(data));
-    // article.getAll().then((data) => console.log(data))
-    this.getAllArticles()
+  created() {
+    this.$store.dispatch('articleStore/getAll')
   },
-  methods: {
-    async getAllArticles() {
-      const all = await article.getAll();
-      console.log(all)
-    }
-  }
+  computed: {
+    ...mapState('articleStore', { articles: 'all' })
+  },
 }
 </script>
