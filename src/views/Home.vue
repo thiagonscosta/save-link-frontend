@@ -1,7 +1,11 @@
 <template>
   <div class="">
-    <ListFolders :folders="folders" />
+    <ListFolders 
+      :folders="folders"
+      @open="openFolder" 
+    />
     <Board />
+    <div v-for="article in articles" :key="article._id">{{ article }}</div>
   </div>
 </template>
 
@@ -13,7 +17,8 @@ import ListFolders from '@/components/ListFolders.vue'
 export default {
   name: 'Home',
   computed: {
-    ...mapState('folderStore', { folders: 'all' })
+    ...mapState('folderStore', { folders: 'all' }),
+    ...mapState('articleStore', { articles: 'all' }),
   },
   created() {
     this.$store.dispatch('folderStore/getFolders')
@@ -21,6 +26,12 @@ export default {
   components: {
     Board,
     ListFolders,
+  },
+  methods: {
+    openFolder(id) {
+      console.log(id)
+      this.$store.dispatch('articleStore/getByFolder', id)
+    }
   }
 }
 </script>

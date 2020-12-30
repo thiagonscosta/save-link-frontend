@@ -11,6 +11,12 @@ const articleStore = {
         .then(resp => {
           commit('setAll', resp.data.articles)
         })
+    },
+    getByFolder({ commit }, folderId) {
+      articleService.getByFolder(folderId)
+        .then(data => data.articles)
+        .then(articles => commit('setAll', articles))
+        .catch(err => console.log(err));
     }
   },
   mutations: {
