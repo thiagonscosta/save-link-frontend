@@ -1,16 +1,17 @@
-import service from '../../services/folder';
+import folderService from '../../services/folderService';
 
 const state = () => ({
-  all: ''
+  all: null
 });
 
 const getters = {};
 const actions = {
   getFolders({ commit }) {
-    service.getall()
-      .then(res => res.folders)
-      .then(folders => commit('setFolders', folders))
-      .catch(err => console.log(err)) 
+    folderService
+      .getall()
+      .then((res) => res.folders)
+      .then((folders) => commit("setFolders", folders))
+      .catch((err) => console.log(err)); 
   }
 };
 const mutations = {

@@ -1,7 +1,6 @@
 <template>
   <div class="">
-    <ListFolders />
-    <div v-for="f in folders" :key="f._id">{{ f }}</div>
+    <ListFolders :folders="folders" />
     <Board />
   </div>
 </template>
@@ -14,10 +13,10 @@ import ListFolders from '@/components/ListFolders.vue'
 export default {
   name: 'Home',
   computed: {
-    ...mapState('folder', { folders: 'all' })
+    ...mapState('folderStore', { folders: 'all' })
   },
   created() {
-    this.$store.dispatch('folder/getFolders')
+    this.$store.dispatch('folderStore/getFolders')
   },
   components: {
     Board,

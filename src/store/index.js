@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import article from './modules/article'
-import folder from './modules/folder'
+import articleStore from "./modules/articleStore";
+import folderStore from './modules/folderStore'
 
 Vue.use(Vuex)
 
@@ -10,7 +10,7 @@ export default new Vuex.Store({
   mutations: {},
   actions: {},
   modules: {
-    article,
-    folder
-  }
-})
+    articleStore,
+    folderStore,
+  },
+});
